@@ -53,7 +53,7 @@ class Lead extends Eloquent {
 					'homephone' => $data->HomePhone,
 					'workphone' => $data->WorkPhone,
 					'preferredcontacttime' => $data->Q3,
-					'birthdate' => '01/01/2000',
+					'birthdate' => '',
 					'tobaccouser' => $data->Smoking,
 					'pregnant' => 'NA',
 					'majorhealthproblems' => 'NA',
