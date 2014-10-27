@@ -13,10 +13,10 @@
 				<thead>
 					<tr>
 						<th class="large-1">#</th>
-						<th>Lead ID</th>
-						<th class="large-2">Status</th>
 						<th class="large-2">Name</th>
-						<th class="large-2">Sale Date</th>
+						<th class="large-2">Work Phone</th>
+						<th class="large-2">State</th>
+						<th class="large-2">Entry Date</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -24,10 +24,10 @@
 					@foreach($sales as $sale)
 					<tr>
 						<td>{{ ++$ctr }}</td>
-						<td><a href="{{ URL::to('lead/'.$sale->id); }}">{{ $sale->vici_lead_id }}</a></td>
-						<td>{{ $sale->vici_status }}</td>
-						<td>{{ $sale->getName() }}</td>
-						<td>{{ date('M j, Y', strtotime($sale->vici_sale_date)) }}</td>
+						<td><a href="{{ URL::to('lead/'.$sale->id); }}">{{ $sale->getName() }}</a></td>
+						<td>{{ $sale->workphone }}</td>
+						<td>{{ $sale->state }}</td>
+						<td>{{ date('M j, Y', strtotime($sale->created_at)) }}</td>
 					</tr>
 					@endforeach
 				</tbody>

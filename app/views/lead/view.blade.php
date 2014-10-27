@@ -3,7 +3,7 @@
 @section('title')
 	<div class="row">
 		<div class="large-12 columns" data-section>
-			Lead #{{ $lead->vici_lead_id }}
+			{{ $lead->getName() }} ({{ $lead->workphone }})
 		</div>
 	</div>
 	<div class="row">

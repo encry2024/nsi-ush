@@ -77,8 +77,11 @@
 				</table>
 			</div>
 			<div class="row collapse">
-					<div class="large-2 columns end">
+					<div class="large-2 columns">
 						{{ Form::submit('UPDATE', array('class' => 'button small')) }}
+					</div>
+					<div class="large-2 columns end">
+						{{ HTML::link("lead/" . $lead->id, "CANCEL", array('class' => 'button small')) }}
 					</div>
 				</div>
 		</section>
