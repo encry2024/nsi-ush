@@ -25,6 +25,33 @@ class Lead extends Eloquent {
 	}
 
 
+	public static function tryCreate($data) {
+
+		//validate
+		$rules = array(
+			'state' => 'required',
+			'workphone' => 'required',
+			'firstName' => 'required',
+			'lastName' => 'required'
+		);
+
+		$validation =  Validator::make($data,$rules);
+
+		if($validation->fails()) {
+			$failed = $validation->failed();
+			return Redirect::to('lead/add')->with('error_index', $failed)->withErrors($validation)->withInput();
+		} else {
+			unset($data['_token']);
+			$data['user_id'] = Auth::user()->id;
+			$lead = Lead::create($data);
+
+			if($lead) {
+				return Redirect::to('lead/' . $lead->id);
+			}
+		}
+	}
+
+
 	public static function sync($viciInfo) {
 		$lead = false;
 		$data = Lead::data($viciInfo->lead_id, $viciInfo->list_id);

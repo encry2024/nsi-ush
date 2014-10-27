@@ -18,6 +18,20 @@ class LeadController extends BaseController {
 	}
 
 
+	public function add()
+	{
+		return View::make('lead.add');
+	}
+
+	public function create() {
+		$data = Input::all();
+
+		$lead = Lead::tryCreate($data);
+
+		return $lead;
+	}
+
+
 	public function update($id)
 	{
 		$lead = Lead::tryUpdate($id, Input::all());

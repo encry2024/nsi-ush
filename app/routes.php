@@ -111,6 +111,8 @@ Route::group(array('before' => 'auth'), function() {
 	});
 
 	//Lead routes
+	Route::get('lead/add', 'LeadController@add');
+	Route::post('lead/add', 'LeadController@create');
 	Route::get('lead/{id}', 'LeadController@view');
 	Route::get('lead/{id}/edit', 'LeadController@edit');
 	Route::post('lead/{id}/edit', 'LeadController@update');
