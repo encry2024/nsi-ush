@@ -85,7 +85,7 @@ Route::group(array('before' => 'auth'), function() {
 	});
 
 
-	Route::post('submit-all', function()
+	/*Route::post('submit-all', function()
 	{
 		//get all unsubmitted sales
 		$sales = Lead::where('submitted', '=', 'N')->where('cancel', '=', 'N')->orderBy('vici_sale_date', 'DESC')->get();
@@ -95,10 +95,10 @@ Route::group(array('before' => 'auth'), function() {
 		}
 
 		return Redirect::to('unsubmitted-sales');
-	});
+	});*/
 
 
-	Route::post('resubmit-all', function()
+	/*Route::post('resubmit-all', function()
 	{
 		//get all unsubmitted sales
 		$sales = Lead::where('success', '=', 'N')->where('cancel', '=', 'N')->orderBy('vici_sale_date', 'DESC')->get();
@@ -108,7 +108,7 @@ Route::group(array('before' => 'auth'), function() {
 		}
 
 		return Redirect::to('unsubmitted-sales');
-	});
+	});*/
 
 	//Lead routes
 	Route::get('lead/add', 'LeadController@add');
