@@ -7,19 +7,6 @@
 
 @section('content')
 	@if(count($sales) > 0)
-	{{ Form::open(array('url' => 'submit-all', 'method' => 'post', 'class' => 'custom')) }}
-	<div class="row">
-		<div class="large-12 columns">
-				<div class="row collapse">
-					<div class="large-2 columns end">
-						{{ Form::submit('SUBMIT ALL', array('class' => 'button small')) }}
-					</div>
-				</div>
-			</fieldset>
-		</div>
-	</div>
-	{{ Form::token(); }}
-	{{ Form::close(); }}
 	<div class="row">
 		<div class="large-12 columns">
 			<table class="large-12">
