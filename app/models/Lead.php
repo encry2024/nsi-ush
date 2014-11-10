@@ -89,9 +89,10 @@ class Lead extends Eloquent {
 				);
 
 			if($viciInfo->state == 'TX') {
-				$info['AgentNumber'] = '4B9BAFCD-4D2A-455E-B813-077DE883FD6D';
+				//$info['AgentNumber'] = '4B9BAFCD-4D2A-455E-B813-077DE883FD6D';
+				$info['AgentNumber'] = '0a673d32-f7ac-470a-92bd-7985d35c02d0'; //TX Market Rebecca Romo
 			} else {
-				$info['AgentNumber'] = '5CECD075-3A70-4AEF-93C0-E011A5AB9445';
+				$info['AgentNumber'] = 'b8e36e57-553a-4d2d-8eff-d6c491de967c'; //GA and TN Market Andy Montague
 			}
 
 			$lead = parent::create($info);
