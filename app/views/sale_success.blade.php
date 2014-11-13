@@ -14,7 +14,7 @@
 					<tr>
 						<th class="large-1">#</th>
 						<th class="large-2">Name</th>
-						<th class="large-2">Work Phone</th>
+						<th class="large-2">Disposition</th>
 						<th class="large-2">State</th>
 						<th class="large-2">Sale Date(EST)</th>
 						<th class="large-2">Success Date</th>
@@ -25,8 +25,8 @@
 					@foreach($sales as $sale)
 					<tr>
 						<td>{{ ++$ctr }}</td>
-						<td><a href="{{ URL::to('lead/'.$sale->id); }}">{{ $sale->getName() }}</a></td>
-						<td>{{ $sale->workphone }}</td>
+						<td><a href="{{ URL::to('lead/'.$sale->id); }}">{{ $sale->getName() }} ({{ $sale->workphone }})</a></td>
+						<td>{{ $sale->vici_status }}</td>
 						<td>{{ $sale->state }}</td>
 						<td>{{ date('M j, Y', strtotime($sale->vici_sale_date)) }}</td>
 						<td>{{ date('M j, Y', strtotime($sale->success_date)) }}</td>
