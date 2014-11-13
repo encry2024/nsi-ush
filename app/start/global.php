@@ -64,7 +64,14 @@ App::error(function(Exception $exception, $code)
 
 App::down(function()
 {
-	return Response::make("Be right back!", 503);
+	$ip = Request::getClientIp();
+    $allowed = array('localhost', '127.0.0.1');
+
+    if(!in_array($ip, $allowed))
+    {
+    	return Response::make("Maintenance mode. Be right back!", 503);
+    }
+	
 });
 
 /*

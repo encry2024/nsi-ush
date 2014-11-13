@@ -32,7 +32,8 @@ class Lead extends Eloquent {
 			'state' => 'required',
 			'workphone' => 'required',
 			'firstName' => 'required',
-			'lastName' => 'required'
+			'lastName' => 'required',
+			'vici_status' => 'required'
 		);
 
 		$validation =  Validator::make($data,$rules);

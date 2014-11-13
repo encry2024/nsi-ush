@@ -18,6 +18,9 @@
 			<div class="content" data-slug="section2">
 				<table class="large-8">
 					<tr>
+						<td class="large-4 text-right"><h6 class="subheader">Disposition:</h6></td><td class="large-8">{{ Form::select('vici_status', array('SALEAP'=>'SALEAP', 'SILO'=>'SILO'), Input::old('vici_status')) }}</td>
+					</tr>
+					<tr>
 						<td class="large-4 text-right"><h6 class="subheader">First Name:</h6></td><td class="large-8">{{ Form::text('firstName', Input::old('firstName')) }}</td>
 					</tr>
 					<tr>
