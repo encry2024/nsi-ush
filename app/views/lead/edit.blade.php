@@ -1,3 +1,6 @@
+<?php 
+	$agents = array('0a673d32-f7ac-470a-92bd-7985d35c02d0'=>'Rebecca Romo(TX)', '136A0161-DEFA-4C1A-B671-6673FC3262A1'=>'Brad Woods(FL)', 'b8e36e57-553a-4d2d-8eff-d6c491de967c'=>'Market Andy Montague(GA and TN)');
+?>
 @extends('layouts.default')
 
 @section('title')
@@ -20,6 +23,9 @@
 					<tr>
 						<td class="large-4 text-right"><h6 class="subheader">Vici Disposition:</h6></td><td class="large-8">{{ $lead->vici_status }}</td>
 					</tr>
+					<tr>
+						<td class="large-4 text-right"><h6 class="subheader">Agent:</h6></td><td class="large-8">{{ $agents[$lead->AgentNumber] }}</td>
+					</tr
 					<tr>
 						<td class="large-4 text-right"><h6 class="subheader">First Name:</h6></td><td class="large-8">{{ Form::text('firstName', $lead->firstName) }}</td>
 					</tr>

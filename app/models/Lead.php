@@ -14,7 +14,7 @@ class Lead extends Eloquent {
 		$queryString = "
 			SELECT a.lead_id, a.list_id, a.last_local_call_time, a.state, a.status 
 			FROM vicidial_list a INNER JOIN vicidial_lists b on a.list_id = b.list_id
-			WHERE a.status IN ('SALEAP','SILO') AND b.campaign_id like 'USHA_%' AND date(last_local_call_time) = '$date'
+			WHERE a.status IN ('SALEAP','SILO') AND (b.campaign_id like 'USHA_%') AND date(last_local_call_time) = '$date'
 		";
 
 		$sales = DB::connection('mysql_vici')->select($queryString);
@@ -43,6 +43,7 @@ class Lead extends Eloquent {
 			return Redirect::to('lead/add')->with('error_index', $failed)->withErrors($validation)->withInput();
 		} else {
 			unset($data['_token']);
+			$data['user_id'] = Auth::user()->id;
 			$data['user_id'] = Auth::user()->id;
 			$lead = Lead::create($data);
 
@@ -92,7 +93,9 @@ class Lead extends Eloquent {
 			if($viciInfo->state == 'TX') {
 				//$info['AgentNumber'] = '4B9BAFCD-4D2A-455E-B813-077DE883FD6D';
 				$info['AgentNumber'] = '0a673d32-f7ac-470a-92bd-7985d35c02d0'; //TX Market Rebecca Romo
-			} else {
+			} elseif($viciInfo->state == 'FL') {
+				$info['AgentNumber'] = '136A0161-DEFA-4C1A-B671-6673FC3262A1'; //FL Market Brad Woods
+			}  else {
 				$info['AgentNumber'] = 'b8e36e57-553a-4d2d-8eff-d6c491de967c'; //GA and TN Market Andy Montague
 			}
 
@@ -152,7 +155,7 @@ class Lead extends Eloquent {
 
 		//get response code
 		preg_match("/([a-zA-Z_]+)\<\/string\>/", $contents, $matches);
-		$code = $matches[1];
+		$code = isset($matches[1])?$matches[1]:"";
 
 		//insert new record in Link table
 		$link = Link::create(array(
