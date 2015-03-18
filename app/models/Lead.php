@@ -94,16 +94,37 @@ class Lead extends Eloquent {
 					'comments' => $data->Other_Notes,
 				);
 
+
 			if($viciInfo->state == 'TX') {
 				//$info['AgentNumber'] = '4B9BAFCD-4D2A-455E-B813-077DE883FD6D';
 				$info['AgentNumber'] = '0a673d32-f7ac-470a-92bd-7985d35c02d0'; //TX Market Rebecca Romo
+				$lead = parent::create($info);
 			} elseif($viciInfo->state == 'FL') {
 				$info['AgentNumber'] = '136A0161-DEFA-4C1A-B671-6673FC3262A1'; //FL Market Brad Woods
-			}  else {
-				$info['AgentNumber'] = 'b8e36e57-553a-4d2d-8eff-d6c491de967c'; //GA and TN Market Andy Montague
+				$lead = parent::create($info);
+			} elseif($viciInfo->state == 'TN') {
+				$info['AgentNumber'] = 'b8e36e57-553a-4d2d-8eff-d6c491de967c'; //TN Market Andy Montague
+				$lead = parent::create($info);
+			} elseif($viciInfo->state == 'AZ') {
+				$info['AgentNumber'] = 'B30D454B-1AEE-4DE1-A146-E4C3822CA695'; //AZ Market Richard Starked 
+				$lead = parent::create($info);
+			} elseif($viciInfo->state == 'IN') {
+				$info['AgentNumber'] = 'B30D454B-1AEE-4DE1-A146-E4C3822CA695'; //AZ Market Richard Starked 
+				$lead = parent::create($info);
+			} elseif($viciInfo->state == 'GA') {
+				//GA zip codes for Andy
+				$andy_zips = array('30032', '30303', '30305', '30306', '30307', '30308', '30309', '30310', '30311', '30312', '30313', '30314', '30315', '30316', '30317', '30318', '30319', '30324', '30326', '30327', '30331', '30332', '30334', '30336', '30342', '30344', '30354', '30363', '30294', '30337', '30083', '30086', '30087', '30088', '30106', '30168', '30213', '30236', '30237', '30238', '30030', '30031', '30032', '30033', '30034', '30035', '30036', '30037', '30080', '30081', '30082', '30122', '30126', '30127', '30012', '30013', '30094', '30014', '30015', '30016', '30525', '30344',
+);
+				if(in_array($info['zip'], $andy_zips)) {
+					$info['AgentNumber'] = 'b8e36e57-553a-4d2d-8eff-d6c491de967c'; //GA Market Andy Montague
+				} else {
+					$info['AgentNumber'] = '5CECD075-3A70-4AEF-93C0-E011A5AB9445'; //GA Market Darrell Giannotti
+				}
+				
+				$lead = parent::create($info);
+			} else {
+				$lead = false;
 			}
-
-			$lead = parent::create($info);
 		}
 
 		if($lead) {
