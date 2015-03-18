@@ -98,6 +98,17 @@
 					</tr>
 				</table>
 			</div>
+			<div class="content" data-slug="section3">
+				<h2>History</h2>
+				<hr>
+				<table class="large-8">
+					<tr><th>#</th><th>Status</th><th>Date</th></tr>
+				<?php $i=0 ?>
+				@foreach($lead->history as $history)
+				<tr><td>{{ ++$i }}</td><td>{{ $history->status }}</td><td>{{ $history->created_at }}</td></tr>
+				@endforeach
+				</table>
+			</div>
 		</section>
 	</div>
 </div>

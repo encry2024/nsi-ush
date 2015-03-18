@@ -4,6 +4,10 @@ class Lead extends Eloquent {
 
 	 protected static $unguarded = true;
 
+	 public function history() {
+	 	return $this->hasMany('Link', 'lead_id', 'vici_lead_id');
+	 }
+
 	/**
 	 *	Fetch sale leads from vici
 	 *
