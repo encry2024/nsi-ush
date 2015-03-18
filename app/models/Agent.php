@@ -12,7 +12,8 @@ class Agent extends Eloquent {
 			'61EAB991-926B-4819-BA25-3F45DEDAAD06'=>'Joel Kesselman(Pennsylvania)',
 			'0932D9DE-6525-43EC-BE2A-4885D3CE91E6'=>'Stephen Kesselman(Pennsylvania)',
 			'C07CD196-A119-4195-A33B-A6282A6B62C5'=>'Stu Denker(Iowa, Nebraska, Louisiana)',
-			'9287C7F5-DF60-4E6C-9C86-26597E7F958E'=>'James Higgins(Pennsylvania)'
+			'9287C7F5-DF60-4E6C-9C86-26597E7F958E'=>'James Higgins(Pennsylvania)',
+			'1972420A-BDFC-47AA-9399-3BD74EA48167'=>'Mark Kahil(TX-Zip 770,773,774,775)'
 		);
 	}
 }

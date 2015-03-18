@@ -96,8 +96,13 @@ class Lead extends Eloquent {
 
 
 			if($viciInfo->state == 'TX') {
-				//$info['AgentNumber'] = '4B9BAFCD-4D2A-455E-B813-077DE883FD6D';
-				$info['AgentNumber'] = '0a673d32-f7ac-470a-92bd-7985d35c02d0'; //TX Market Rebecca Romo
+				//Mark Kahil zip codes starting with 770,773,774,775
+				$mark_zips = array('770', '773','774', '775');
+				if(in_array(substr($info['zip'], 0, 3), $mark_zips)) {
+					$info['AgentNumber'] = '1972420A-BDFC-47AA-9399-3BD74EA48167'; //TX Market Mark Kahil
+				} else {
+					$info['AgentNumber'] = '0a673d32-f7ac-470a-92bd-7985d35c02d0'; //TX Market Rebecca Romo
+				}
 				$lead = parent::create($info);
 			} elseif($viciInfo->state == 'FL') {
 				$info['AgentNumber'] = '136A0161-DEFA-4C1A-B671-6673FC3262A1'; //FL Market Brad Woods
