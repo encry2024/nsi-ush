@@ -21,7 +21,7 @@
 						<td class="large-4 text-right"><h6 class="subheader">Disposition:</h6></td><td class="large-8">{{ Form::select('vici_status', array('SALEAP'=>'SALEAP', 'SILO'=>'SILO'), Input::old('vici_status')) }}</td>
 					</tr>
 					<tr>
-						<td class="large-4 text-right"><h6 class="subheader">Agent:</h6></td><td class="large-8">{{ Form::select('AgentNumber', array('0a673d32-f7ac-470a-92bd-7985d35c02d0'=>'Rebecca Romo(TX)', '136A0161-DEFA-4C1A-B671-6673FC3262A1'=>'Brad Woods(FL)', 'b8e36e57-553a-4d2d-8eff-d6c491de967c'=>'Market Andy Montague(GA and TN)'), Input::old('AgentNumber')) }}</td>
+						<td class="large-4 text-right"><h6 class="subheader">Agent:</h6></td><td class="large-8">{{ Form::select('AgentNumber', $agents, Input::old('AgentNumber')) }}</td>
 					</tr>
 					<tr>
 						<td class="large-4 text-right"><h6 class="subheader">First Name:</h6></td><td class="large-8">{{ Form::text('firstName', Input::old('firstName')) }}</td>

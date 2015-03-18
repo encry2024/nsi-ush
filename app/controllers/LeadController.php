@@ -6,7 +6,8 @@ class LeadController extends BaseController {
 	{
 		$lead = Lead::find($id);
 		return View::make('lead.view')
-			->with('lead', $lead);
+			->with('lead', $lead)
+			->with('agents', Agent::getList());
 	}
 
 
@@ -14,13 +15,15 @@ class LeadController extends BaseController {
 	{
 		$lead = Lead::find($id);
 		return View::make('lead.edit')
-			->with('lead', $lead);
+			->with('lead', $lead)
+			->with('agents', Agent::getList());
 	}
 
 
 	public function add()
 	{
-		return View::make('lead.add');
+		return View::make('lead.add')
+			->with('agents', Agent::getList());
 	}
 
 	public function create() {
