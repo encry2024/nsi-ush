@@ -5,7 +5,7 @@ class Lead extends Eloquent {
 	 protected static $unguarded = true;
 
 	 public function history() {
-	 	return $this->hasMany('Link', 'lead_id', 'vici_lead_id');
+	 	return $this->hasMany('Link', 'source_lead_id');
 	 }
 
 	/**
@@ -193,7 +193,8 @@ class Lead extends Eloquent {
 			'lead_id' => $this->vici_lead_id,
 			'url' => $url,
 			'status' => $code,
-			'response' => $contents
+			'response' => $contents,
+			'source_lead_id' => $this->id
 		));
 
 		//update lead table entry
