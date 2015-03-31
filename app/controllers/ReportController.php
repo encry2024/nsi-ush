@@ -32,4 +32,25 @@ class ReportController extends BaseController {
 	    //return Redirect::to('consolidated');
 	}
 
+
+	/**
+	 * Generate sale summary and sales list in vici
+	 * @return void
+	 */
+	public function getSummary() {
+		$summary = NULL;
+		$list = NULL;
+
+		if(Input::get('date')) {
+			$summary = Report::getSummary(date('Y-m-d', strtotime(Input::get('date'))));
+
+			$list = Report::getList(date('Y-m-d', strtotime(Input::get('date'))));
+		}
+
+
+		return View::make('report.summary')
+			->with('summary', $summary)
+			->with('list', $list);
+	}
+
 }	

@@ -8,6 +8,7 @@
 		<li class="heading">{{ HTML::link("/", "Fetch Sales") }}</li>
 		<li class="heading">{{ HTML::link("lead/add", "Add Lead") }}</li>
 		<li class="heading">{{ HTML::link("reports", "Reports") }}</li>
+		<li class="heading">{{ HTML::link("summary", "Summary") }}</li>
 		<li class="divider"></li>
 		<li class="heading">Lead Summary</li>
 		<li>{{ HTML::link("unsubmitted-sales", " - Unsubmitted (" . $summary['unsubmitted'] . ")") }}</li>

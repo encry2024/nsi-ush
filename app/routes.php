@@ -126,4 +126,5 @@ Route::group(array('before' => 'auth'), function() {
 	Route::get('reports', 'ReportController@index');
 	Route::post('reports', 'ReportController@getReport');
 
+	Route::get('summary', 'ReportController@getSummary');
 });
