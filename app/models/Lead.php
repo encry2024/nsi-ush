@@ -18,7 +18,7 @@ class Lead extends Eloquent {
 		$queryString = "
 			SELECT a.lead_id, a.list_id, a.last_local_call_time, a.state, a.status 
 			FROM vicidial_list a INNER JOIN vicidial_lists b on a.list_id = b.list_id INNER JOIN vicidial_campaigns c on c.campaign_id = b.campaign_id
-			WHERE a.status IN ('SALEAP','SILO') AND (b.campaign_id like 'USHA_%') AND date(last_local_call_time) = '$date' AND c.active = 'Y'
+			WHERE a.status IN ('SALEAP','SILO') AND (b.campaign_id like 'USHA_%') AND date(last_local_call_time) = '$date'
 		";
 
 		$sales = DB::connection('mysql_vici')->select($queryString);
