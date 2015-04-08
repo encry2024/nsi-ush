@@ -9,7 +9,8 @@
 		{{ HTML::style('assets/css/classic.date.css') }}
 		{{ HTML::style('packages/foundation-icons-general/stylesheets/general_foundicons.css') }}
 		{{ HTML::script('packages/foundation-5.4.0/js/vendor/modernizr.js') }}
-		
+		{{ HTML::style('packages/DataTables-1.10.4/media/css/jquery.dataTables.min.css') }}
+		{{ HTML::style('packages/DataTables-1.10.4/media/css/jquery.dataTables.css') }}
 	</head>
 
 	<body>
@@ -68,11 +69,14 @@
 			</div>
 			@yield('popups')
 		</div>
-		
+		{{ HTML::script('packages/DataTables-1.10.4/media/js/jquery.js') }}
 		{{ HTML::script('packages/foundation-5.4.0/js/vendor/jquery.js') }}
 		{{ HTML::script('packages/foundation-5.4.0/js/foundation.min.js') }}
 		{{ HTML::script('assets/js/picker.js') }}
 		{{ HTML::script('assets/js/picker.date.js') }}
+		{{ HTML::script('packages/DataTables-1.10.4/media/js/jquery.dataTables.min.js') }}
+		{{ HTML::script('packages/DataTables-1.10.4/media/js/jquery.dataTables.min.js') }}
+        {{ HTML::script('packages/DataTables-1.10.4/media/js/jquery.dataTables.js') }}
 		<script>
 			$(function(){
 			    $(document).foundation();    

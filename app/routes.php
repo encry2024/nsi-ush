@@ -127,4 +127,116 @@ Route::group(array('before' => 'auth'), function() {
 	Route::post('reports', 'ReportController@getReport');
 
 	Route::get('summary', 'ReportController@getSummary');
+
+
+
+
+    #JSONS
+	Route::get('fetch/unsubmitted-sales', function() {
+		$json = array();
+
+		//get all unsubmitted sales
+		$sales = Lead::where('submitted', '=', 'N')->where('cancel', '=', 'N')->orderBy('vici_sale_date', 'DESC')->get();
+
+		foreach ($sales as $sale) {
+			$json[] = array(
+				"id"    =>  $sale->id,
+				"name"  =>  $sale->getName() . "(".$sale->workphone.")",
+				"dispo" =>  $sale->vici_status,
+				"workphone" =>  $sale->workphone,
+				"state" =>  $sale->state,
+				"sale_date" => date('M j, Y', strtotime($sale->vici_sale_date)),
+				"entry_date" => date('M j, Y', strtotime($sale->created_at)),
+			);
+		}
+		return json_encode($json);
+	});
+
+	//Summary List
+	Route::get('fetch/sales/{date}', function( $date ) {
+		$json = array();
+		$ctr = 0;
+		if($date) {
+			$summary = Report::getSummary(date('Y-m-d', strtotime($date)));
+
+			$list = Report::getList(date('Y-m-d', strtotime($date)));
+
+			foreach ( $list as $sale ) {
+
+				$json[] = array(
+					'id'			=>	++$ctr,
+					'campaign'		=>	$sale->campaign_id,
+					'user'			=>	$sale->user,
+					'phone_number' 	=>	$sale->phone_number,
+					'status'		=>	$sale->status,
+					'cdt'			=>	$sale->call_date,
+				);
+			}
+			
+		}
+		return json_encode($json);
+	});
+
+
+	//Unsuccessful
+	Route::get('fetch/unsuccessful-sales', function() {
+		//get all unsubmitted sales
+		$json = array();
+		$sales = Lead::where('success', '=', 'N')->where('submitted', '=', 'Y')->where('cancel', '=', 'N')->orderBy('vici_sale_date', 'DESC')->get();
+		
+		foreach ($sales as $sale) {
+			$json[] = array(
+				'id'	=>	$sale->id,
+				'name'	=>	$sale->getName() . "(".$sale->workphone.")",
+				'dispo'	=>	$sale->vici_status,
+				'state'	=>	$sale->state,
+				'sub_status'	=> $sale->status,
+				'last_submit'	=> date('M j, Y', strtotime($sale->submit_date)),
+
+			);
+		}
+
+		return json_encode($json);
+	});
+
+
+	//Successful
+	Route::get('fetch/successful-sales', function(){
+		//get all unsubmitted sales
+		$json = array();
+		$sales = Lead::where('success', '=', 'Y')->orderBy('vici_sale_date', 'DESC')->get();
+		
+		foreach ($sales as $sale) {
+			$json[] = array(
+				'id'	=>	$sale->id,
+				'user'	=>	$sale->getName() . "(".$sale->workphone.")",
+				'dispo'	=>	$sale->vici_status,
+				'sale_date'	=>	date('M j, Y', strtotime($sale->vici_sale_date)),
+				'su_date'	=>	date('M j, Y', strtotime($sale->success_date)),
+			);
+		}
+		return json_encode($json);
+	});
+
+
+	//Cancelled
+	Route::get('fetch/cancelled-sales', function() {
+		$json = array();
+
+		//get all unsubmitted sales
+		$sales = Lead::where('cancel', '=', 'Y')->orderBy('vici_sale_date', 'DESC')->get();
+
+		foreach ($sales as $sale) {
+			$json[] = array(
+				"id"    =>  $sale->id,
+				"name"  =>  $sale->getName() . "(".$sale->workphone.")",
+				"dispo" =>  $sale->vici_status,
+				"workphone" =>  $sale->workphone,
+				"state" =>  $sale->state,
+				"sale_date" => date('M j, Y', strtotime($sale->vici_sale_date)),
+				"entry_date" => date('M j, Y', strtotime($sale->created_at)),
+			);
+		}
+		return json_encode($json);
+	});
 });

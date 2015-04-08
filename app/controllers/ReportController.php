@@ -41,11 +41,14 @@ class ReportController extends BaseController {
 		$summary = NULL;
 		$list = NULL;
 
+		$json = array();
+
 		if(Input::get('date')) {
 			$summary = Report::getSummary(date('Y-m-d', strtotime(Input::get('date'))));
 
 			$list = Report::getList(date('Y-m-d', strtotime(Input::get('date'))));
 		}
+
 
 
 		return View::make('report.summary')
