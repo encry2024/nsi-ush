@@ -127,6 +127,7 @@ Route::group(array('before' => 'auth'), function() {
 	Route::post('reports', 'ReportController@getReport');
 
 	Route::get('summary', 'ReportController@getSummary');
+<<<<<<< HEAD
 
 
 
@@ -239,4 +240,6 @@ Route::group(array('before' => 'auth'), function() {
 		}
 		return json_encode($json);
 	});
+=======
+>>>>>>> 009d2c22f225c0165c13b9312195f9568bdb5a99
 });

@@ -9,8 +9,12 @@
 		{{ HTML::style('assets/css/classic.date.css') }}
 		{{ HTML::style('packages/foundation-icons-general/stylesheets/general_foundicons.css') }}
 		{{ HTML::script('packages/foundation-5.4.0/js/vendor/modernizr.js') }}
+<<<<<<< HEAD
 		{{ HTML::style('packages/DataTables-1.10.4/media/css/jquery.dataTables.min.css') }}
 		{{ HTML::style('packages/DataTables-1.10.4/media/css/jquery.dataTables.css') }}
+=======
+		
+>>>>>>> 009d2c22f225c0165c13b9312195f9568bdb5a99
 	</head>
 
 	<body>
@@ -69,14 +73,21 @@
 			</div>
 			@yield('popups')
 		</div>
+<<<<<<< HEAD
 		{{ HTML::script('packages/DataTables-1.10.4/media/js/jquery.js') }}
+=======
+		
+>>>>>>> 009d2c22f225c0165c13b9312195f9568bdb5a99
 		{{ HTML::script('packages/foundation-5.4.0/js/vendor/jquery.js') }}
 		{{ HTML::script('packages/foundation-5.4.0/js/foundation.min.js') }}
 		{{ HTML::script('assets/js/picker.js') }}
 		{{ HTML::script('assets/js/picker.date.js') }}
+<<<<<<< HEAD
 		{{ HTML::script('packages/DataTables-1.10.4/media/js/jquery.dataTables.min.js') }}
 		{{ HTML::script('packages/DataTables-1.10.4/media/js/jquery.dataTables.min.js') }}
         {{ HTML::script('packages/DataTables-1.10.4/media/js/jquery.dataTables.js') }}
+=======
+>>>>>>> 009d2c22f225c0165c13b9312195f9568bdb5a99
 		<script>
 			$(function(){
 			    $(document).foundation();    

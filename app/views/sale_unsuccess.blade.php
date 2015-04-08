@@ -9,11 +9,39 @@
 	@if(count($sales) > 0)
 	<div class="row">
 		<div class="large-12 columns">
+<<<<<<< HEAD
 			<table class="large-12" id="unsuccessful">
+=======
+			<table class="large-12">
+				<thead>
+					<tr>
+						<th class="large-1">#</th>
+						<th class="large-2">Name</th>
+						<th class="large-2">Disposition</th>
+						<th class="large-2">State</th>
+						<th class="large-2">Submit Status</th>
+						<th class="large-2">Last Submit Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php $ctr = 0;?>
+					@foreach($sales as $sale)
+					<tr>
+						<td>{{ ++$ctr }}</td>
+						<td><a href="{{ URL::to('lead/'.$sale->id); }}">{{ $sale->getName() }} ({{ $sale->workphone }})</a></td>
+						<td>{{ $sale->vici_status }}</td>
+						<td>{{ $sale->state }}</td>
+						<td>{{ $sale->status }}</td>
+						<td>{{ date('M j, Y', strtotime($sale->submit_date)) }}</td>
+					</tr>
+					@endforeach
+				</tbody>
+>>>>>>> 009d2c22f225c0165c13b9312195f9568bdb5a99
 			</table>
 		</div>
 	</div>
 	@endif
+<<<<<<< HEAD
 @endsection
 
 @section('scripts')
@@ -121,4 +149,6 @@ $(document).ready( function() {
 	});
 });
 </script>
+=======
+>>>>>>> 009d2c22f225c0165c13b9312195f9568bdb5a99
 @endsection
