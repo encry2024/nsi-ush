@@ -213,8 +213,9 @@ Route::group(array('before' => 'auth'), function() {
 		foreach ($sales as $sale) {
 			$json[] = array(
 				'id'	=>	$sale->id,
-				'user'	=>	$sale->getName() . "(".$sale->workphone.")",
+				'name'	=>	$sale->getName() . "(".$sale->workphone.")",
 				'dispo'	=>	$sale->vici_status,
+				'state'	=>	$sale->state,
 				'sale_date'	=>	date('M j, Y', strtotime($sale->vici_sale_date)),
 				'su_date'	=>	date('M j, Y', strtotime($sale->success_date)),
 

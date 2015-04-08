@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'nsi-ush',
+			'database'  => 'ush',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',
