@@ -9,7 +9,6 @@
 	@if(count($sales) > 0)
 	<div class="row">
 		<div class="large-12 columns">
-<<<<<<< HEAD
 			<table class="large-12" id="cancel"></table>
 		</div>
 	</div>
@@ -121,34 +120,4 @@ $(document).ready( function() {
 	});
 });
 </script>
-=======
-			<table class="large-12">
-				<thead>
-					<tr>
-						<th class="large-1">#</th>
-						<th class="large-2">Name</th>
-						<th class="large-2">Disposition</th>
-						<th class="large-2">State</th>
-						<th class="large-2">Sale Date(EST)</th>
-						<th class="large-2">Entry Date</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php $ctr = 0;?>
-					@foreach($sales as $sale)
-					<tr>
-						<td>{{ ++$ctr }}</td>
-						<td><a href="{{ URL::to('lead/'.$sale->id); }}">{{ $sale->getName() }} ({{ $sale->workphone }})</a></td>
-						<td>{{ $sale->vici_status }}</td>
-						<td>{{ $sale->state }}</td>
-						<td>{{ date('M j, Y', strtotime($sale->vici_sale_date)) }}</td>
-						<td>{{ date('M j, Y', strtotime($sale->created_at)) }}</td>
-					</tr>
-					@endforeach
-				</tbody>
-			</table>
-		</div>
-	</div>
-	@endif
->>>>>>> 009d2c22f225c0165c13b9312195f9568bdb5a99
 @endsection

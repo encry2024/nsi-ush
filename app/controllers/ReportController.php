@@ -41,11 +41,8 @@ class ReportController extends BaseController {
 		$summary = NULL;
 		$list = NULL;
 
-<<<<<<< HEAD
 		$json = array();
 
-=======
->>>>>>> 009d2c22f225c0165c13b9312195f9568bdb5a99
 		if(Input::get('date')) {
 			$summary = Report::getSummary(date('Y-m-d', strtotime(Input::get('date'))));
 
@@ -53,10 +50,7 @@ class ReportController extends BaseController {
 		}
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 009d2c22f225c0165c13b9312195f9568bdb5a99
 		return View::make('report.summary')
 			->with('summary', $summary)
 			->with('list', $list);

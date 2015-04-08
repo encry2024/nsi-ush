@@ -57,35 +57,7 @@
 	<h6>Sales</h6>
 	<div class="row">
 		<div class="large-12 columns">
-<<<<<<< HEAD
 			<table class="large-12" id="sales"></table>
-=======
-			<table class="large-12">
-				<thead>
-					<tr>
-						<th class="large-1">#</th>
-						<th class="large-2">Campaign</th>
-						<th class="large-2">Agent</th>
-						<th class="large-2">BTN</th>
-						<th class="large-2">Disposition</th>
-						<th class="large-2">Call Date/Time</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php $ctr = 0;?>
-					@foreach($list as $sale)
-					<tr>
-						<td>{{ ++$ctr }}</td>
-						<td>{{ $sale->campaign_id }}</td>
-						<td>{{ $sale->user }}</td>
-						<td>{{ $sale->phone_number }}</td>
-						<td>{{ $sale->status }}</td>
-						<td>{{ $sale->call_date }}</td>
-					</tr>
-					@endforeach
-				</tbody>
-			</table>
->>>>>>> 009d2c22f225c0165c13b9312195f9568bdb5a99
 		</div>
 	</div>
 	@endif
@@ -94,7 +66,6 @@
 
 @section('scripts')
 	<script type="text/javascript">
-<<<<<<< HEAD
 	$(document).ready( function() {
 		$('#dp1').pickadate({
 			format: 'yyyy-mm-dd',
@@ -200,10 +171,5 @@
 			$('div.dataTables_filter input').attr('placeholder', 'Filter Sales');
 		});
 	});
-=======
-		$('#dp1').pickadate({
-			format: 'yyyy-mm-dd',
-		});
->>>>>>> 009d2c22f225c0165c13b9312195f9568bdb5a99
 	</script>
 @endsection

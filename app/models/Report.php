@@ -13,10 +13,7 @@ class Report extends Eloquent {
 		//query summary
 		$list = DB::connection('mysql_vici')->select("call getUSHASales('$date')");
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 009d2c22f225c0165c13b9312195f9568bdb5a99
 		return $list;
 	}
 }

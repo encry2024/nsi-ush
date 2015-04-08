@@ -55,11 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-<<<<<<< HEAD
 			'database'  => 'nsi-ush',
-=======
-			'database'  => 'ush',
->>>>>>> 009d2c22f225c0165c13b9312195f9568bdb5a99
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',
