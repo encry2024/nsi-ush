@@ -1,0 +1,106 @@
+<thead>
+					<tr>
+						<th class="large-1">#</th>
+						<th class="large-2">Name</th>
+						<th class="large-2">Disposition</th>
+						<th class="large-2">State</th>
+						<th class="large-2">Sale Date(EST)</th>
+						<th class="large-2">Entry Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php $ctr = 0;?>
+					@foreach($sales as $sale)
+					<tr>
+						<td>{{ ++$ctr }}</td>
+						<td><a href="{{ URL::to('lead/'.$sale->id); }}">{{ $sale->getName() }} ({{ $sale->workphone }})</a></td>
+						<td>{{ $sale->vici_status }}</td>
+						<td>{{ $sale->state }}</td>
+						<td>{{ date('M j, Y', strtotime($sale->vici_sale_date)) }}</td>
+						<td>{{ date('M j, Y', strtotime($sale->created_at)) }}</td>
+					</tr>
+					@endforeach
+				</tbody>
+
+
+
+
+				<thead>
+	<tr>
+		<th class="large-1">#</th>
+		<th class="large-2">Name</th>
+		<th class="large-2">Disposition</th>
+		<th class="large-2">State</th>
+		<th class="large-2">Sale Date(EST)</th>
+		<th class="large-2">Success Date</th>
+	</tr>
+</thead>
+<tbody>
+	<?php $ctr = 0;?>
+	@foreach($sales as $sale)
+	<tr>
+		<td>{{ ++$ctr }}</td>
+		<td><a href="{{ URL::to('lead/'.$sale->id); }}">{{ $sale->getName() }} ({{ $sale->workphone }})</a></td>
+		<td>{{ $sale->vici_status }}</td>
+		<td>{{ $sale->state }}</td>
+		<td>{{ date('M j, Y', strtotime($sale->vici_sale_date)) }}</td>
+		<td>{{ date('M j, Y', strtotime($sale->success_date)) }}</td>
+	</tr>
+	@endforeach
+</tbody>
+
+
+
+
+
+<thead>
+	<tr>
+		<th class="large-1">#</th>
+		<th class="large-2">Campaign</th>
+		<th class="large-2">Agent</th>
+		<th class="large-2">BTN</th>
+		<th class="large-2">Disposition</th>
+		<th class="large-2">Call Date/Time</th>
+	</tr>
+</thead>
+<tbody>
+	<?php $ctr = 0;?>
+	@foreach($list as $sale)
+	<tr>
+		<td>{{ ++$ctr }}</td>
+		<td>{{ $sale->campaign_id }}</td>
+		<td>{{ $sale->user }}</td>
+		<td>{{ $sale->phone_number }}</td>
+		<td>{{ $sale->status }}</td>
+		<td>{{ $sale->call_date }}</td>
+	</tr>
+	@endforeach
+</tbody>
+
+
+
+
+
+<thead>
+	<tr>
+		<th class="large-1">#</th>
+		<th class="large-2">Name</th>
+		<th class="large-2">Disposition</th>
+		<th class="large-2">State</th>
+		<th class="large-2">Submit Status</th>
+		<th class="large-2">Last Submit Date</th>
+	</tr>
+</thead>
+<tbody>
+	<?php $ctr = 0;?>
+	@foreach($sales as $sale)
+	<tr>
+		<td>{{ ++$ctr }}</td>
+		<td><a href="{{ URL::to('lead/'.$sale->id); }}">{{ $sale->getName() }} ({{ $sale->workphone }})</a></td>
+		<td>{{ $sale->vici_status }}</td>
+		<td>{{ $sale->state }}</td>
+		<td>{{ $sale->status }}</td>
+		<td>{{ date('M j, Y', strtotime($sale->submit_date)) }}</td>
+	</tr>
+	@endforeach
+</tbody>
