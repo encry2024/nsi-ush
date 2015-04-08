@@ -18,11 +18,47 @@
 @section('scripts')
 <script>
 $(document).ready( function() {
+	//DATE FORMATTER
+	jQuery.fn.dataTableExt.oSort['custom_euro_date-asc'] = function(x, y) {
+	    var xVal = getCustomEuroDateValue(x);
+	    var yVal = getCustomEuroDateValue(y);
+	 
+	    if (xVal < yVal) {
+	        return -1;
+	    } else if (xVal > yVal) {
+	        return 1;
+	    } else {
+	        return 0;
+	    }
+	}
+	 
+	jQuery.fn.dataTableExt.oSort['custom_euro_date-desc'] = function(x, y) {
+	    var xVal = getCustomEuroDateValue(x);
+	    var yVal = getCustomEuroDateValue(y);
+	 
+	    if (xVal < yVal) {
+	        return 1;
+	    } else if (xVal > yVal) {
+	        return -1;
+	    } else {
+	        return 0;
+	    }
+	}
+	 
+	function getCustomEuroDateValue(strDate) {
+	    var frDatea = $.trim(strDate).split(' ');
+	    var frDatea2 = frDatea[0].split('/');
+	     
+	    var x = Date.parse(frDatea2[2] + frDatea2[1] + frDatea2[0]);
+	    x = x * 1;
+	 
+	    return x;
+	}
+
 	$.getJSON("{{ URL::to('/') }}/fetch/unsubmitted-sales",function(data) {
 		$('#submission').dataTable({
 			"aaData": data,
 			"lengthMenu": [[20, 50, 100, -1], [20, 50, 100, "All"]],
-			"aaSorting": [[ 4, 'desc' ]],
 			"oLanguage": {
 				"sLengthMenu": "No. of Unsubmitted Sales to display _MENU_",
 				"oPaginate": {
@@ -50,6 +86,11 @@ $(document).ready( function() {
 				//FORMAT THE VALUES THAT IS DISPLAYED ON mDataProp
 				//ID
 				{ "bSortable": false, "aTargets": [ 0 ] },
+				{},
+				{},
+				{},
+				{ "sType":"custom_euro_date" },
+				{ "sType":"custom_euro_date" },
 				{
 					"aTargets": [ 0 ], // Column to target
 					"mRender": function ( data, type, full ) {
@@ -92,15 +133,15 @@ $(document).ready( function() {
 					"mRender": function ( data, type, full ) {
 					// 'full' is the row's data object, and 'data' is this column's data
 					// e.g. 'full[0]' is the comic id, and 'data' is the comic title
-					return '<label>' + full["sale_date"] + '</label>';
+					return '<label><input type="hidden" value="<label>' +full['dte_1'] + '</label>">' + full["sale_date"] + '</label>';
 					}
 				},
 				{
-					"aTargets": [ 4 ], // Column to target
+					"aTargets": [ 5 ], // Column to target
 					"mRender": function ( data, type, full ) {
 					// 'full' is the row's data object, and 'data' is this column's data
 					// e.g. 'full[0]' is the comic id, and 'data' is the comic title
-					return '<label >' + full["entry_date"] + '</label>';
+					return '<label><input type="hidden" value="<label>' +full['dte_2'] + '</label>">' + full["entry_date"] + '</label>';
 					}
 				}
 			],

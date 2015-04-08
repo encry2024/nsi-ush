@@ -147,6 +147,9 @@ Route::group(array('before' => 'auth'), function() {
 				"state" =>  $sale->state,
 				"sale_date" => date('M j, Y', strtotime($sale->vici_sale_date)),
 				"entry_date" => date('M j, Y', strtotime($sale->created_at)),
+
+				"dte_1"	=>	date('m/d/y', strtotime($sale->vici_sale_date)),
+				"dte_2"	=>	date('m/d/y', strtotime($sale->created_at)),
 			);
 		}
 		return json_encode($json);
@@ -169,7 +172,7 @@ Route::group(array('before' => 'auth'), function() {
 					'user'			=>	$sale->user,
 					'phone_number' 	=>	$sale->phone_number,
 					'status'		=>	$sale->status,
-					'cdt'			=>	$sale->call_date,
+					'cdt'			=>	date('m/d/y H:i:s', strtotime($sale->call_date)),
 				);
 			}
 			
@@ -193,6 +196,7 @@ Route::group(array('before' => 'auth'), function() {
 				'sub_status'	=> $sale->status,
 				'last_submit'	=> date('M j, Y', strtotime($sale->submit_date)),
 
+				'dte_1'	=> date('m/d/y', strtotime($sale->submit_date)),
 			);
 		}
 
@@ -213,6 +217,9 @@ Route::group(array('before' => 'auth'), function() {
 				'dispo'	=>	$sale->vici_status,
 				'sale_date'	=>	date('M j, Y', strtotime($sale->vici_sale_date)),
 				'su_date'	=>	date('M j, Y', strtotime($sale->success_date)),
+
+				"dte_1"	=>	date('m/d/y', strtotime($sale->vici_sale_date)),
+				"dte_2"	=>	date('m/d/y', strtotime($sale->success_date)),
 			);
 		}
 		return json_encode($json);
@@ -235,6 +242,9 @@ Route::group(array('before' => 'auth'), function() {
 				"state" =>  $sale->state,
 				"sale_date" => date('M j, Y', strtotime($sale->vici_sale_date)),
 				"entry_date" => date('M j, Y', strtotime($sale->created_at)),
+
+				"dte_1"	=>	date('m/d/y', strtotime($sale->vici_sale_date)),
+				"dte_2"	=>	date('m/d/y', strtotime($sale->created_at)),
 			);
 		}
 		return json_encode($json);

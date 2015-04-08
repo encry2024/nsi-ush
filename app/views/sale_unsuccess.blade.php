@@ -23,7 +23,6 @@ $(document).ready( function() {
 		$('#unsuccessful').dataTable({
 			"aaData": data,
 			"lengthMenu": [[20, 50, 100, -1], [20, 50, 100, "All"]],
-			"aaSorting": [[ 4, 'desc' ]],
 			"oLanguage": {
 				"sLengthMenu": "No. of Unsubmitted Sales to display _MENU_",
 				"oPaginate": {

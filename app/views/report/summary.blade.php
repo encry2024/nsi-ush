@@ -66,15 +66,53 @@
 
 @section('scripts')
 	<script type="text/javascript">
+
 	$(document).ready( function() {
+		jQuery.fn.dataTableExt.oSort['custom_euro_date-asc'] = function(x, y) {
+		    var xVal = getCustomEuroDateValue(x);
+		    var yVal = getCustomEuroDateValue(y);
+		 
+		    if (xVal < yVal) {
+		        return -1;
+		    } else if (xVal > yVal) {
+		        return 1;
+		    } else {
+		        return 0;
+		    }
+		}
+		 
+		jQuery.fn.dataTableExt.oSort['custom_euro_date-desc'] = function(x, y) {
+		    var xVal = getCustomEuroDateValue(x);
+		    var yVal = getCustomEuroDateValue(y);
+		 
+		    if (xVal < yVal) {
+		        return 1;
+		    } else if (xVal > yVal) {
+		        return -1;
+		    } else {
+		        return 0;
+		    }
+		}
+		 
+		function getCustomEuroDateValue(strDate) {
+		    var frDatea = $.trim(strDate).split(' ');
+		    var frDatea2 = frDatea[0].split('/');
+		     
+		    var x = Date.parse(frDatea2[2] + frDatea2[1] + frDatea2[0]);
+		    x = x * 1;
+		 
+		    return x;
+		}
+
 		$('#dp1').pickadate({
 			format: 'yyyy-mm-dd',
 		});
+
+
 		$.getJSON("{{ URL::to('/') }}/fetch/sales/{{ Input::get('date') }}", function(data) {
 			$('#sales').dataTable({
 				"aaData": data,
 				"lengthMenu": [[20, 50, 100, -1], [20, 50, 100, "All"]],
-				"aaSorting": [[ 5, 'desc' ]],
 				"oLanguage": {
 					"sLengthMenu": "No. of Sales to display _MENU_",
 					"oPaginate": {
@@ -102,6 +140,11 @@
 					//FORMAT THE VALUES THAT IS DISPLAYED ON mDataProp
 					//ID
 					{ "bSortable": false, "aTargets": [ 0 ] },
+					{},
+					{},
+					{},
+					{},
+					{ "sType":"custom_euro_date" },
 					{
 						"aTargets": [ 0 ], // Column to target
 						"mRender": function ( data, type, full ) {

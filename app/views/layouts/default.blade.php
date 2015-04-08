@@ -75,7 +75,6 @@
 		{{ HTML::script('assets/js/picker.js') }}
 		{{ HTML::script('assets/js/picker.date.js') }}
 		{{ HTML::script('packages/DataTables-1.10.4/media/js/jquery.dataTables.min.js') }}
-		{{ HTML::script('packages/DataTables-1.10.4/media/js/jquery.dataTables.min.js') }}
         {{ HTML::script('packages/DataTables-1.10.4/media/js/jquery.dataTables.js') }}
 		<script>
 			$(function(){
