@@ -148,8 +148,8 @@ Route::group(array('before' => 'auth'), function() {
 				"sale_date" => date('M j, Y', strtotime($sale->vici_sale_date)),
 				"entry_date" => date('M j, Y', strtotime($sale->created_at)),
 
-				"dte_1"	=>	date('m/d/y', strtotime($sale->vici_sale_date)),
-				"dte_2"	=>	date('m/d/y', strtotime($sale->created_at)),
+				"dte_1"	=>	date('y/m/d', strtotime($sale->vici_sale_date)),
+				"dte_2"	=>	date('y/m/d', strtotime($sale->created_at)),
 			);
 		}
 		return json_encode($json);
@@ -175,7 +175,6 @@ Route::group(array('before' => 'auth'), function() {
 					'cdt'			=>	date('m/d/y H:i:s', strtotime($sale->call_date)),
 				);
 			}
-			
 		}
 		return json_encode($json);
 	});
@@ -196,7 +195,7 @@ Route::group(array('before' => 'auth'), function() {
 				'sub_status'	=> $sale->status,
 				'last_submit'	=> date('M j, Y', strtotime($sale->submit_date)),
 
-				'dte_1'	=> date('m/d/y', strtotime($sale->submit_date)),
+				'dte_1'	=> date('y/m/d', strtotime($sale->submit_date)),
 			);
 		}
 
@@ -205,7 +204,7 @@ Route::group(array('before' => 'auth'), function() {
 
 
 	//Successful
-	Route::get('fetch/successful-sales', function(){
+	Route::get('fetch/successful-sales', function() {
 		//get all unsubmitted sales
 		$json = array();
 		$sales = Lead::where('success', '=', 'Y')->orderBy('vici_sale_date', 'DESC')->get();
@@ -218,9 +217,8 @@ Route::group(array('before' => 'auth'), function() {
 				'state'	=>	$sale->state,
 				'sale_date'	=>	date('M j, Y', strtotime($sale->vici_sale_date)),
 				'su_date'	=>	date('M j, Y', strtotime($sale->success_date)),
-
-				"dte_1"	=>	date('m/d/y', strtotime($sale->vici_sale_date)),
-				"dte_2"	=>	date('m/d/y', strtotime($sale->success_date)),
+				"dte_1"	=>	date('y/m/d', strtotime($sale->vici_sale_date)),
+				"dte_2"	=>	date('y/m/d', strtotime($sale->success_date)),
 			);
 		}
 		return json_encode($json);
@@ -244,8 +242,8 @@ Route::group(array('before' => 'auth'), function() {
 				"sale_date" => date('M j, Y', strtotime($sale->vici_sale_date)),
 				"entry_date" => date('M j, Y', strtotime($sale->created_at)),
 
-				"dte_1"	=>	date('m/d/y', strtotime($sale->vici_sale_date)),
-				"dte_2"	=>	date('m/d/y', strtotime($sale->created_at)),
+				"dte_1"	=>	date('y/m/d', strtotime($sale->vici_sale_date)),
+				"dte_2"	=>	date('y/m/d', strtotime($sale->created_at)),
 			);
 		}
 		return json_encode($json);
